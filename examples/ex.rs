@@ -1,19 +1,16 @@
-
 // based on webmidikit demo
-use wmidi::prelude::*;
+use wmidi_apple::prelude::*;
 
-struct ReceiverEvent {
-
-}
+struct ReceiverEvent {}
 // unsafe impl Send for ReceiverEvent { }
 // unsafe impl Sync for ReceiverEvent { }
 
 struct MIDIReceiver {
-    pub rx: std::sync::mpsc::Receiver<ReceiverEvent>
+    pub rx: std::sync::mpsc::Receiver<ReceiverEvent>,
 }
 
-unsafe impl Send for MIDIReceiver { }
-unsafe impl Sync for MIDIReceiver { }
+unsafe impl Send for MIDIReceiver {}
+unsafe impl Sync for MIDIReceiver {}
 
 impl MIDIInputObserver for MIDIReceiver {
     fn receive(&mut self, packet_list: &coremidi::PacketList) {
@@ -44,5 +41,5 @@ fn main() {
     // access.outputs()
     // std::thread::
     // println!("selected {:?}", z);
-    // let output = access.output_for(input).unwrap();
+    let output = access.outputs().prompt();
 }

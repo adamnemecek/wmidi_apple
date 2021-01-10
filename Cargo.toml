@@ -9,3 +9,7 @@ edition = "2018"
 [dependencies]
 #coremidi = "0.4.0"
 coremidi = { path = "../coremidi" }
+
+# core-foundation-sys = "0.2"
+# core-foundation = "0.2"
+# coremidi-sys = "2.0"
